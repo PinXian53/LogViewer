@@ -38,22 +38,27 @@ namespace LogViewer
             this.chooseLogButton = new Sunny.UI.UIButton();
             this.configComboBox = new Sunny.UI.UIComboBox();
             this.logTextBox = new Sunny.UI.UIRichTextBox();
-            this.logoPictureBox = new System.Windows.Forms.PictureBox();
             this.dataGridView = new Sunny.UI.UIDataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.startButton = new Sunny.UI.UIButton();
             this.logPathLable = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
+            this.label4 = new System.Windows.Forms.Label();
+            this.searchTextBox = new Sunny.UI.UITextBox();
+            this.syntaxSwitch = new Sunny.UI.UISwitch();
+            this.label5 = new System.Windows.Forms.Label();
+            this.logoPictureBox = new System.Windows.Forms.PictureBox();
+            this.searchButton = new Sunny.UI.UISymbolButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // chooseLogButton
             // 
             this.chooseLogButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chooseLogButton.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.chooseLogButton.Location = new System.Drawing.Point(438, 49);
+            this.chooseLogButton.Location = new System.Drawing.Point(401, 49);
             this.chooseLogButton.MinimumSize = new System.Drawing.Size(1, 1);
             this.chooseLogButton.Name = "chooseLogButton";
             this.chooseLogButton.Size = new System.Drawing.Size(100, 30);
@@ -68,7 +73,7 @@ namespace LogViewer
             this.configComboBox.DropDownStyle = Sunny.UI.UIDropDownStyle.DropDownList;
             this.configComboBox.FillColor = System.Drawing.Color.White;
             this.configComboBox.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.configComboBox.Location = new System.Drawing.Point(438, 87);
+            this.configComboBox.Location = new System.Drawing.Point(401, 87);
             this.configComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.configComboBox.MinimumSize = new System.Drawing.Size(63, 0);
             this.configComboBox.Name = "configComboBox";
@@ -93,15 +98,6 @@ namespace LogViewer
             this.logTextBox.Style = Sunny.UI.UIStyle.Custom;
             this.logTextBox.TabIndex = 4;
             this.logTextBox.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // logoPictureBox
-            // 
-            this.logoPictureBox.Location = new System.Drawing.Point(25, 48);
-            this.logoPictureBox.Name = "logoPictureBox";
-            this.logoPictureBox.Size = new System.Drawing.Size(131, 115);
-            this.logoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.logoPictureBox.TabIndex = 5;
-            this.logoPictureBox.TabStop = false;
             // 
             // dataGridView
             // 
@@ -186,7 +182,7 @@ namespace LogViewer
             // 
             this.startButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.startButton.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.startButton.Location = new System.Drawing.Point(438, 125);
+            this.startButton.Location = new System.Drawing.Point(401, 125);
             this.startButton.MinimumSize = new System.Drawing.Size(1, 1);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(100, 30);
@@ -204,11 +200,98 @@ namespace LogViewer
             this.logPathLable.Size = new System.Drawing.Size(777, 23);
             this.logPathLable.TabIndex = 13;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("微軟正黑體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label4.Location = new System.Drawing.Point(853, 132);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(56, 19);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "Search";
+            // 
+            // searchTextBox
+            // 
+            this.searchTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.searchTextBox.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.searchTextBox.Location = new System.Drawing.Point(916, 125);
+            this.searchTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.searchTextBox.MinimumSize = new System.Drawing.Size(1, 16);
+            this.searchTextBox.Name = "searchTextBox";
+            this.searchTextBox.Padding = new System.Windows.Forms.Padding(5);
+            this.searchTextBox.ShowText = false;
+            this.searchTextBox.Size = new System.Drawing.Size(407, 29);
+            this.searchTextBox.Style = Sunny.UI.UIStyle.Custom;
+            this.searchTextBox.TabIndex = 15;
+            this.searchTextBox.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.searchTextBox.Watermark = "";
+            // 
+            // syntaxSwitch
+            // 
+            this.syntaxSwitch.ActiveText = "On";
+            this.syntaxSwitch.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.syntaxSwitch.InActiveText = "Off";
+            this.syntaxSwitch.Location = new System.Drawing.Point(1012, 85);
+            this.syntaxSwitch.MinimumSize = new System.Drawing.Size(1, 1);
+            this.syntaxSwitch.Name = "syntaxSwitch";
+            this.syntaxSwitch.Size = new System.Drawing.Size(75, 26);
+            this.syntaxSwitch.Style = Sunny.UI.UIStyle.Custom;
+            this.syntaxSwitch.TabIndex = 16;
+            this.syntaxSwitch.Text = "uiSwitch1";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("微軟正黑體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label5.Location = new System.Drawing.Point(853, 88);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(153, 19);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "Use RowFilter syntax";
+            // 
+            // logoPictureBox
+            // 
+            this.logoPictureBox.Location = new System.Drawing.Point(25, 48);
+            this.logoPictureBox.Name = "logoPictureBox";
+            this.logoPictureBox.Size = new System.Drawing.Size(131, 115);
+            this.logoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.logoPictureBox.TabIndex = 5;
+            this.logoPictureBox.TabStop = false;
+            // 
+            // searchButton
+            // 
+            this.searchButton.CircleRectWidth = 2;
+            this.searchButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.searchButton.FillColor = System.Drawing.Color.White;
+            this.searchButton.FillColor2 = System.Drawing.Color.Silver;
+            this.searchButton.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.searchButton.IsCircle = true;
+            this.searchButton.Location = new System.Drawing.Point(1331, 114);
+            this.searchButton.MinimumSize = new System.Drawing.Size(1, 1);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.RectColor = System.Drawing.Color.Silver;
+            this.searchButton.Size = new System.Drawing.Size(35, 49);
+            this.searchButton.Style = Sunny.UI.UIStyle.Custom;
+            this.searchButton.StyleCustomMode = true;
+            this.searchButton.Symbol = 61442;
+            this.searchButton.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(98)))), ((int)(((byte)(102)))));
+            this.searchButton.SymbolHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            this.searchButton.SymbolPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(131)))), ((int)(((byte)(229)))));
+            this.searchButton.SymbolSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(131)))), ((int)(((byte)(229)))));
+            this.searchButton.TabIndex = 86;
+            this.searchButton.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1401, 896);
+            this.Controls.Add(this.searchButton);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.syntaxSwitch);
+            this.Controls.Add(this.searchTextBox);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.logPathLable);
             this.Controls.Add(this.startButton);
             this.Controls.Add(this.label3);
@@ -226,11 +309,13 @@ namespace LogViewer
             this.Style = Sunny.UI.UIStyle.Custom;
             this.Text = "Json Log Viewer v1.0.0";
             this.ZoomScaleRect = new System.Drawing.Rectangle(15, 15, 800, 450);
-            ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.Label label4;
 
         #endregion
 
@@ -244,6 +329,10 @@ namespace LogViewer
         private System.Windows.Forms.Label label1;
         private Sunny.UI.UIButton startButton;
         private System.Windows.Forms.Label logPathLable;
+        private Sunny.UI.UITextBox searchTextBox;
+        private Sunny.UI.UISwitch syntaxSwitch;
+        private System.Windows.Forms.Label label5;
+        private Sunny.UI.UISymbolButton searchButton;
     }
 }
 

@@ -5,7 +5,8 @@ namespace LogViewer
     {
         public string ColumnName { set; get; }
         public string JsonPath { set; get; }
-        public bool CanSearch { set; get; }
-        public bool IsSeverity { set; get; }
+        public bool IsSeverity { set; get; } = false;
+        public bool Searchable { set; get; } = false;
+        public string SpecialColumn { set; get; }
     }
 }

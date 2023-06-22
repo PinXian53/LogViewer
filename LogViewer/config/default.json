@@ -1,18 +1,31 @@
 [
 	{
+		"ColumnName": "serialNumber",
+		"JsonPath": null,
+		"IsSeverity": false,
+		"Searchable": false,
+		"SpecialColumn": "SerialNumber"
+	},
+	{
 		"ColumnName": "textPayload",
 		"JsonPath": "$.textPayload",
-		"IsSeverity": false
+		"IsSeverity": false,
+		"Searchable": true,
+		"SpecialColumn": null
 	},
 	{
 		"ColumnName": "severity",
 		"JsonPath": "$.severity",
-		"IsSeverity": true
+		"IsSeverity": true,
+		"Searchable": false,
+		"SpecialColumn": null
 	},
 	{
 		"ColumnName": "timestamp",
 		"JsonPath": "$.timestamp",
-		"IsSeverity": false
+		"IsSeverity": false,
+		"Searchable": false,
+		"SpecialColumn": null
 	},
 	{
 		"ColumnName": "serviceName",
@@ -22,11 +35,15 @@
 	{
 		"ColumnName": "version",
 		"JsonPath": "$.labels.k8s-pod/version",
-		"IsSeverity": false
+		"IsSeverity": false,
+		"Searchable": false,
+		"SpecialColumn": null
 	},
 	{
 		"ColumnName": "insertId",
 		"JsonPath": "$.insertId",
-		"IsSeverity": false
+		"IsSeverity": false,
+		"Searchable": false,
+		"SpecialColumn": null
 	}
 ]
