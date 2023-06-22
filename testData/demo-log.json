@@ -1,0 +1,183 @@
+[
+	{
+		"textPayload": "Starting GraphqlDemoApplication using Java 1.8.0_345 on Pin-ROG-M16 with PID 98996",
+		"insertId": "iuk9n29f1apc9ap7",
+		"timestamp": "2023-05-16T10:35:05.863886992Z",
+		"severity": "INFO",
+		"labels": {
+			"k8s-pod/app": "demo-api",
+			"k8s-pod/type": "app",
+			"k8s-pod/pod-template-hash": "8sd7f40587",
+			"k8s-pod/app_kubernetes_io/name": "demo-api",
+			"k8s-pod/version": "v20230516.1"
+		},
+		"logName": "projects/demo/logs/stdout",
+		"receiveTimestamp": "2023-05-16T10:35:06.029240379Z"
+	},
+	{
+		"textPayload": "No active profile set, falling back to 1 default profile: \"default\"",
+		"insertId": "catzagb8elqzw2wn",
+		"timestamp": "2023-05-16T10:35:05.871234862Z",
+		"severity": "INFO",
+		"labels": {
+			"k8s-pod/version": "v20230516.1",
+			"k8s-pod/pod-template-hash": "8sd7f40587",
+			"k8s-pod/app": "demo-api",
+			"k8s-pod/app_kubernetes_io/name": "demo-api",
+			"k8s-pod/type": "app"
+		},
+		"logName": "projects/demo/logs/stdout",
+		"receiveTimestamp": "2023-05-16T10:35:06.027113236Z"
+	},
+	{
+		"textPayload": "Tomcat initialized with port(s): 8080 (http)",
+		"insertId": "72wok9ditwgh373g",
+		"timestamp": "2023-05-16T10:35:05.901539510Z",
+		"severity": "INFO",
+		"labels": {
+			"k8s-pod/app_kubernetes_io/name": "demo-api",
+			"k8s-pod/version": "v20230516.1",
+			"k8s-pod/type": "app",
+			"k8s-pod/app": "demo-api",
+			"k8s-pod/pod-template-hash": "8sd7f40587"
+		},
+		"logName": "projects/demo/logs/stdout",
+		"receiveTimestamp": "2023-05-16T10:35:06.029240379Z"
+	},
+	{
+		"textPayload": "Starting service [Tomcat]",
+		"insertId": "nm7lezch3r4ljbyv",
+		"timestamp": "2023-05-16T10:35:05.907223900Z",
+		"severity": "INFO",
+		"labels": {
+			"k8s-pod/type": "app",
+			"k8s-pod/app_kubernetes_io/name": "demo-api",
+			"k8s-pod/pod-template-hash": "8sd7f40587",
+			"k8s-pod/version": "v20230516.1",
+			"k8s-pod/app": "demo-api"
+		},
+		"logName": "projects/demo/logs/stdout",
+		"receiveTimestamp": "2023-05-16T10:35:06.027113236Z"
+	},
+	{
+		"textPayload": "Starting Servlet engine: [Apache Tomcat/9.0.65]",
+		"insertId": "xie7a5xkayumwbw4",
+		"timestamp": "2023-05-16T10:35:05.907580449Z",
+		"severity": "INFO",
+		"labels": {
+			"k8s-pod/type": "app",
+			"k8s-pod/pod-template-hash": "8sd7f40587",
+			"k8s-pod/app": "demo-api",
+			"k8s-pod/app_kubernetes_io/name": "demo-api",
+			"k8s-pod/version": "v20230516.1"
+		},
+		"logName": "projects/demo/logs/stdout",
+		"receiveTimestamp": "2023-05-16T10:35:06.029240379Z"
+	},
+	{
+		"textPayload": "Initializing Spring embedded WebApplicationContext",
+		"insertId": "z1radgcz9p0e9esx",
+		"timestamp": "2023-05-16T10:35:05.907819259Z",
+		"severity": "INFO",
+		"labels": {
+			"k8s-pod/app": "demo-api",
+			"k8s-pod/type": "app",
+			"k8s-pod/app_kubernetes_io/name": "demo-api",
+			"k8s-pod/pod-template-hash": "8sd7f40587",
+			"k8s-pod/version": "v20230516.1"
+		},
+		"logName": "projects/demo/logs/stdout",
+		"receiveTimestamp": "2023-05-16T10:35:06.029240379Z"
+	},
+	{
+		"textPayload": "Root WebApplicationContext: initialization completed in 513 ms",
+		"insertId": "h7sbevbhkylv4obo",
+		"timestamp": "2023-05-16T10:35:05.907833109Z",
+		"severity": "INFO",
+		"labels": {
+			"k8s-pod/type": "app",
+			"k8s-pod/app": "demo-api",
+			"k8s-pod/app_kubernetes_io/name": "demo-api",
+			"k8s-pod/version": "v20230516.1",
+			"k8s-pod/pod-template-hash": "8sd7f40587"
+		},
+		"logName": "projects/demo/logs/stdout",
+		"receiveTimestamp": "2023-05-16T10:35:06.029240379Z"
+	},
+	{
+		"textPayload": "GraphQL endpoint HTTP POST /graphql",
+		"insertId": "cof5718dhbo3ab8r",
+		"timestamp": "2023-05-16T10:35:05.907839839Z",
+		"severity": "INFO",
+		"labels": {
+			"k8s-pod/app_kubernetes_io/name": "demo-api",
+			"k8s-pod/app": "demo-api",
+			"k8s-pod/pod-template-hash": "8sd7f40587",
+			"k8s-pod/type": "app",
+			"k8s-pod/version": "v20230516.1"
+		},
+		"logName": "projects/demo/logs/stdout",
+		"receiveTimestamp": "2023-05-16T10:35:06.029240379Z"
+	},
+	{
+		"textPayload": "Tomcat started on port(s): 8080 (http) with context path ''",
+		"insertId": "7t134oe3t4rp29c3",
+		"timestamp": "2023-05-16T10:35:05.907845089Z",
+		"severity": "INFO",
+		"labels": {
+			"k8s-pod/type": "app",
+			"k8s-pod/app_kubernetes_io/name": "demo-api",
+			"k8s-pod/pod-template-hash": "8sd7f40587",
+			"k8s-pod/version": "v20230516.1",
+			"k8s-pod/app": "demo-api"
+		},
+		"logName": "projects/demo/logs/stdout",
+		"receiveTimestamp": "2023-05-16T10:35:06.029240379Z"
+	},
+	{
+		"textPayload": "Started GraphqlDemoApplication in 1.083 seconds (JVM running for 1.567)",
+		"insertId": "7kw86jp6zmsvqu0v",
+		"timestamp": "2023-05-16T10:35:05.907850389Z",
+		"severity": "INFO",
+		"labels": {
+			"k8s-pod/app_kubernetes_io/version": "v20230516.1",
+			"k8s-pod/app_kubernetes_io/name": "demo-api",
+			"k8s-pod/app": "demo-api",
+			"k8s-pod/pod-template-hash": "8sd7f40587",
+			"k8s-pod/type": "app",
+			"k8s-pod/version": "v20230516.1"
+		},
+		"logName": "projects/demo/logs/stdout",
+		"receiveTimestamp": "2023-05-16T10:35:06.029240379Z"
+	},
+	{
+		"textPayload": "Connect 123.123.123.123 time out",
+		"insertId": "7kw86j152msvqu0c",
+		"timestamp": "2023-05-16T10:35:05.907850389Z",
+		"severity": "WARN",
+		"labels": {
+			"k8s-pod/app_kubernetes_io/name": "demo-api",
+			"k8s-pod/app": "demo-api",
+			"k8s-pod/pod-template-hash": "8sd7f40587",
+			"k8s-pod/type": "app",
+			"k8s-pod/version": "v20230516.1"
+		},
+		"logName": "projects/demo/logs/stdout",
+		"receiveTimestamp": "2023-05-16T10:36:06.029240379Z"
+	},
+	{
+		"textPayload": "Exception in thread \"main\" java.lang.OutOfMemoryError: Java heap space",
+		"insertId": "akw86jp6840qu0v",
+		"timestamp": "2023-05-16T10:35:05.907850389Z",
+		"severity": "ERROR",
+		"labels": {
+			"k8s-pod/app_kubernetes_io/name": "demo-api",
+			"k8s-pod/app": "demo-api",
+			"k8s-pod/pod-template-hash": "8sd7f40587",
+			"k8s-pod/type": "app",
+			"k8s-pod/version": "v20230516.1"
+		},
+		"logName": "projects/demo/logs/stdout",
+		"receiveTimestamp": "2023-05-16T10:36:33.029240379Z"
+	}
+]

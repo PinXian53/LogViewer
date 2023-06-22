@@ -1,0 +1,32 @@
+[
+	{
+		"ColumnName": "textPayload",
+		"JsonPath": "$.textPayload",
+		"IsSeverity": false
+	},
+	{
+		"ColumnName": "severity",
+		"JsonPath": "$.severity",
+		"IsSeverity": true
+	},
+	{
+		"ColumnName": "timestamp",
+		"JsonPath": "$.timestamp",
+		"IsSeverity": false
+	},
+	{
+		"ColumnName": "serviceName",
+		"JsonPath": "$.labels.k8s-pod/app",
+		"IsSeverity": false
+	},
+	{
+		"ColumnName": "version",
+		"JsonPath": "$.labels.k8s-pod/version",
+		"IsSeverity": false
+	},
+	{
+		"ColumnName": "insertId",
+		"JsonPath": "$.insertId",
+		"IsSeverity": false
+	}
+]
