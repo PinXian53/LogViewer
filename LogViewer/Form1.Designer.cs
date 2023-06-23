@@ -52,6 +52,8 @@ namespace LogViewer
             this.searchButton = new Sunny.UI.UISymbolButton();
             this.label6 = new System.Windows.Forms.Label();
             this.autoResizeSwitch = new Sunny.UI.UISwitch();
+            this.label7 = new System.Windows.Forms.Label();
+            this.rowCountLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -90,13 +92,13 @@ namespace LogViewer
             // 
             this.logTextBox.FillColor = System.Drawing.Color.White;
             this.logTextBox.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.logTextBox.Location = new System.Drawing.Point(34, 599);
+            this.logTextBox.Location = new System.Drawing.Point(34, 620);
             this.logTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.logTextBox.MinimumSize = new System.Drawing.Size(1, 1);
             this.logTextBox.Name = "logTextBox";
             this.logTextBox.Padding = new System.Windows.Forms.Padding(2);
             this.logTextBox.ShowText = false;
-            this.logTextBox.Size = new System.Drawing.Size(1332, 277);
+            this.logTextBox.Size = new System.Drawing.Size(1332, 256);
             this.logTextBox.Style = Sunny.UI.UIStyle.Custom;
             this.logTextBox.TabIndex = 4;
             this.logTextBox.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -308,11 +310,32 @@ namespace LogViewer
             this.autoResizeSwitch.Text = "uiSwitch1";
             this.autoResizeSwitch.ValueChanged += new Sunny.UI.UISwitch.OnValueChanged(this.autoResizeSwitch_ValueChanged);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("微軟正黑體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label7.Location = new System.Drawing.Point(34, 596);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(54, 19);
+            this.label7.TabIndex = 89;
+            this.label7.Text = "rows : ";
+            // 
+            // rowCountLabel
+            // 
+            this.rowCountLabel.AutoSize = true;
+            this.rowCountLabel.Font = new System.Drawing.Font("微軟正黑體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.rowCountLabel.Location = new System.Drawing.Point(94, 596);
+            this.rowCountLabel.Name = "rowCountLabel";
+            this.rowCountLabel.Size = new System.Drawing.Size(0, 19);
+            this.rowCountLabel.TabIndex = 90;
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1401, 896);
+            this.Controls.Add(this.rowCountLabel);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.autoResizeSwitch);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.searchButton);
@@ -342,6 +365,10 @@ namespace LogViewer
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.Label rowCountLabel;
+
+        private System.Windows.Forms.Label label7;
 
         private Sunny.UI.UISwitch autoResizeSwitch;
 

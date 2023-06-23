@@ -31,67 +31,77 @@ namespace LogViewer
 
         private void BindDataGridView(List<ColumnMapping> columnMappingList, JArray jsonArray)
         {
-            var tmpDataTable = new DataTable();
-            tmpDataTable.Columns.Add(RawDataColumnName, typeof(string));
-            tmpDataTable.Columns.Add(ColorColumnName, typeof(Color));
-
-            var searchList = new List<string>();
-            foreach (var columnMapping in columnMappingList)
+            try
             {
-                if ("SerialNumber" == columnMapping.SpecialColumn)
-                {
-                    tmpDataTable.Columns.Add(columnMapping.ColumnName, typeof(long));
-                }
-                else
-                {
-                    tmpDataTable.Columns.Add(columnMapping.ColumnName, typeof(string));
-                }
+                Cursor = Cursors.WaitCursor;
+                var tmpDataTable = new DataTable();
+                tmpDataTable.Columns.Add(RawDataColumnName, typeof(string));
+                tmpDataTable.Columns.Add(ColorColumnName, typeof(Color));
 
-
-                if (columnMapping.Searchable)
-                {
-                    searchList.Add(columnMapping.ColumnName + " like '%{0}%'");
-                }
-            }
-
-            if (searchList.Count > 0)
-            {
-                searchString = string.Join(" or ", searchList);
-            }
-
-            long serialNumber = 1;
-            foreach (var jToken in jsonArray)
-            {
-                var row = tmpDataTable.NewRow();
-                row[RawDataColumnIndex] = jToken.ToString();
+                var searchList = new List<string>();
                 foreach (var columnMapping in columnMappingList)
                 {
                     if ("SerialNumber" == columnMapping.SpecialColumn)
                     {
-                        row[columnMapping.ColumnName] = serialNumber;
+                        tmpDataTable.Columns.Add(columnMapping.ColumnName, typeof(long));
                     }
                     else
                     {
-                        var value = jToken.SelectToken(columnMapping.JsonPath);
-                        row[columnMapping.ColumnName] = value;
-                        if (columnMapping.IsSeverity)
-                        {
-                            row[ColorColumnIndex] = GetColor(value.ToString());
-                        }
+                        tmpDataTable.Columns.Add(columnMapping.ColumnName, typeof(string));
+                    }
+
+
+                    if (columnMapping.Searchable)
+                    {
+                        searchList.Add(columnMapping.ColumnName + " like '%{0}%'");
                     }
                 }
 
-                tmpDataTable.Rows.Add(row);
-                serialNumber++;
-            }
+                if (searchList.Count > 0)
+                {
+                    searchString = string.Join(" or ", searchList);
+                }
 
-            dataTable = tmpDataTable;
-            dataGridView.DataSource = dataTable;
-            dataGridView.Columns[RawDataColumnIndex].Visible = false;
-            dataGridView.Columns[ColorColumnIndex].Visible = false;
-            if (autoResizeSwitch.Active)
+                long serialNumber = 1;
+                foreach (var jToken in jsonArray)
+                {
+                    var row = tmpDataTable.NewRow();
+                    row[RawDataColumnIndex] = jToken.ToString();
+                    foreach (var columnMapping in columnMappingList)
+                    {
+                        if ("SerialNumber" == columnMapping.SpecialColumn)
+                        {
+                            row[columnMapping.ColumnName] = serialNumber;
+                        }
+                        else
+                        {
+                            var value = jToken.SelectToken(columnMapping.JsonPath);
+                            row[columnMapping.ColumnName] = value;
+                            if (columnMapping.IsSeverity)
+                            {
+                                row[ColorColumnIndex] = GetColor(value.ToString());
+                            }
+                        }
+                    }
+
+                    tmpDataTable.Rows.Add(row);
+                    serialNumber++;
+                }
+
+                dataTable = tmpDataTable;
+                dataGridView.DataSource = dataTable;
+                dataGridView.Columns[RawDataColumnIndex].Visible = false;
+                dataGridView.Columns[ColorColumnIndex].Visible = false;
+                if (autoResizeSwitch.Active)
+                {
+                    AutoResize();
+                }
+
+                rowCountLabel.Text = (dataGridView.RowCount - 1).ToString("N0");
+            }
+            finally
             {
-                AutoResize();
+                Cursor = Cursors.Default;
             }
         }
 
@@ -219,24 +229,41 @@ namespace LogViewer
                 return;
             }
 
-            var dataView = dataTable.DefaultView;
-            if (string.IsNullOrWhiteSpace(searchTextBox.Text))
+            try
             {
-                dataView.RowFilter = null;
-                return;
-            }
+                Cursor = Cursors.WaitCursor;
+                var dataView = dataTable.DefaultView;
+                if (string.IsNullOrWhiteSpace(searchTextBox.Text))
+                {
+                    dataView.RowFilter = null;
+                    if (autoResizeSwitch.Active)
+                    {
+                        AutoResize();
+                    }
+                    return;
+                }
 
-            if (syntaxSwitch.Active)
-            {
-                dataView.RowFilter = searchTextBox.Text;
+                if (syntaxSwitch.Active)
+                {
+                    dataView.RowFilter = searchTextBox.Text;
+                }
+                else if (string.IsNullOrWhiteSpace(searchString))
+                {
+                    dataView.RowFilter = null;
+                }
+                else
+                {
+                    dataView.RowFilter = string.Format(searchString, searchTextBox.Text.Trim());
+                }
+
+                if (autoResizeSwitch.Active)
+                {
+                    AutoResize();
+                }
             }
-            else if (string.IsNullOrWhiteSpace(searchString))
+            finally
             {
-                dataView.RowFilter = null;
-            }
-            else
-            {
-                dataView.RowFilter = string.Format(searchString, searchTextBox.Text.Trim());
+                Cursor = Cursors.Default;
             }
         }
 
@@ -244,7 +271,15 @@ namespace LogViewer
         {
             if (autoResizeSwitch.Active)
             {
-                AutoResize();
+                try
+                {
+                    Cursor = Cursors.WaitCursor;
+                    AutoResize();
+                }
+                finally
+                {
+                    Cursor = Cursors.Default;
+                }
             }
         }
 
