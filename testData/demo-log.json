@@ -15,7 +15,7 @@
 		"receiveTimestamp": "2023-05-16T10:35:06.029240379Z"
 	},
 	{
-		"textPayload": "No active profile set, falling back to 1 default profile: \"default\"",
+		"textPayload": "No active profile set, falling back to 1 default profile: \"default\"\nrow 2...\nrow 3...",
 		"insertId": "catzagb8elqzw2wn",
 		"timestamp": "2023-05-16T10:35:05.871234862Z",
 		"severity": "INFO",

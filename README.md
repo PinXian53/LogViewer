@@ -1,12 +1,13 @@
 # Json Log Viewer
 
 ## 畫面
-![image](https://github.com/PinXian53/LogViewer/blob/main/image/v1.1.0.png)
+![image](https://github.com/PinXian53/LogViewer/blob/main/image/v1.2.0.png)
 
 ## 功能
 1. 可以在 config 資料夾內，自定解析設定檔 (.json)
-2. 支援簡易搜尋功能
-3. 支援進階搜尋功能 (C# DataTable RowFilter)
+2. 支援欄位 auto resize
+3. 支援簡易搜尋功能
+4. 支援進階搜尋功能 (C# DataTable RowFilter)
 
 支援設定:
 - ColumnName [String]: 顯示的欄位名稱
