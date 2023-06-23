@@ -50,6 +50,8 @@ namespace LogViewer
             this.label5 = new System.Windows.Forms.Label();
             this.logoPictureBox = new System.Windows.Forms.PictureBox();
             this.searchButton = new Sunny.UI.UISymbolButton();
+            this.label6 = new System.Windows.Forms.Label();
+            this.autoResizeSwitch = new Sunny.UI.UISwitch();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -282,11 +284,37 @@ namespace LogViewer
             this.searchButton.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("微軟正黑體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label6.Location = new System.Drawing.Point(1156, 88);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(86, 19);
+            this.label6.TabIndex = 87;
+            this.label6.Text = "Auto resize";
+            // 
+            // autoResizeSwitch
+            // 
+            this.autoResizeSwitch.ActiveText = "On";
+            this.autoResizeSwitch.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.autoResizeSwitch.InActiveText = "Off";
+            this.autoResizeSwitch.Location = new System.Drawing.Point(1248, 85);
+            this.autoResizeSwitch.MinimumSize = new System.Drawing.Size(1, 1);
+            this.autoResizeSwitch.Name = "autoResizeSwitch";
+            this.autoResizeSwitch.Size = new System.Drawing.Size(75, 26);
+            this.autoResizeSwitch.Style = Sunny.UI.UIStyle.Custom;
+            this.autoResizeSwitch.TabIndex = 88;
+            this.autoResizeSwitch.Text = "uiSwitch1";
+            this.autoResizeSwitch.ValueChanged += new Sunny.UI.UISwitch.OnValueChanged(this.autoResizeSwitch_ValueChanged);
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1401, 896);
+            this.Controls.Add(this.autoResizeSwitch);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.syntaxSwitch);
@@ -314,6 +342,10 @@ namespace LogViewer
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private Sunny.UI.UISwitch autoResizeSwitch;
+
+        private System.Windows.Forms.Label label6;
 
         private System.Windows.Forms.Label label4;
 

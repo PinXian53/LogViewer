@@ -89,6 +89,10 @@ namespace LogViewer
             dataGridView.DataSource = dataTable;
             dataGridView.Columns[RawDataColumnIndex].Visible = false;
             dataGridView.Columns[ColorColumnIndex].Visible = false;
+            if (autoResizeSwitch.Active)
+            {
+                AutoResize();
+            }
         }
 
         private List<ColumnMapping> GetColumnMappingList()
@@ -234,6 +238,21 @@ namespace LogViewer
             {
                 dataView.RowFilter = string.Format(searchString, searchTextBox.Text.Trim());
             }
+        }
+
+        private void autoResizeSwitch_ValueChanged(object sender, bool value)
+        {
+            if (autoResizeSwitch.Active)
+            {
+                AutoResize();
+            }
+        }
+
+        private void AutoResize()
+        {
+            dataGridView.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dataGridView.AutoResizeColumns();
+            dataGridView.AutoResizeRows();
         }
     }
 }
