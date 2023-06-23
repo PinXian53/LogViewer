@@ -358,7 +358,7 @@ namespace LogViewer
             this.MaximumSize = new System.Drawing.Size(1920, 1080);
             this.Name = "Form1";
             this.Style = Sunny.UI.UIStyle.Custom;
-            this.Text = "Json Log Viewer v1.2.0";
+            this.Text = "Json Log Viewer v1.2.1";
             this.ZoomScaleRect = new System.Drawing.Rectangle(15, 15, 800, 450);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
