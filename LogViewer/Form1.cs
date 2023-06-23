@@ -240,6 +240,7 @@ namespace LogViewer
                     {
                         AutoResize();
                     }
+                    rowCountLabel.Text = (dataGridView.RowCount - 1).ToString("N0");
                     return;
                 }
 
@@ -260,6 +261,7 @@ namespace LogViewer
                 {
                     AutoResize();
                 }
+                rowCountLabel.Text = (dataGridView.RowCount - 1).ToString("N0");
             }
             finally
             {
