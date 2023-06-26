@@ -79,7 +79,7 @@ namespace LogViewer
                             row[columnMapping.ColumnName] = value;
                             if (columnMapping.IsSeverity)
                             {
-                                row[ColorColumnIndex] = GetColor(value.ToString());
+                                row[ColorColumnIndex] = GetColor(value?.ToString());
                             }
                         }
                     }
