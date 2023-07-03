@@ -4,13 +4,12 @@ using System.Windows.Forms;
 
 namespace LogViewer
 {
-    static class Program
+    internal static class Program
     {
-        /// <summary>
-        /// 應用程式的主要進入點。
-        /// </summary>
+        private const string Error = "error";
+
         [STAThread]
-        static void Main()
+        private static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -19,9 +18,9 @@ namespace LogViewer
             Application.Run(new Form1());
         }
 
-        static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
+        private static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
         {
-            MessageBox.Show(e.Exception.Message, "error");
+            MessageBox.Show(e.Exception.Message, Error);
         }
     }
 }

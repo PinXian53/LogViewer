@@ -26,40 +26,37 @@ namespace LogViewer
         private const int RawDataColumnIndex = 0;
         private const string ColorColumnName = "51487b22-7643-4207-bf05-8b5937388927";
         private const int ColorColumnIndex = 1;
-        private string searchString = null;
-        private DataTable dataTable = null;
+
+        private string _currentSearchSyntax;
+        private DataTable _currentDataTable;
 
         private void BindDataGridView(List<ColumnMapping> columnMappingList, JArray jsonArray)
         {
             try
             {
                 Cursor = Cursors.WaitCursor;
+
                 var tmpDataTable = new DataTable();
                 tmpDataTable.Columns.Add(RawDataColumnName, typeof(string));
                 tmpDataTable.Columns.Add(ColorColumnName, typeof(Color));
 
-                var searchList = new List<string>();
+                var searchSyntaxList = new List<string>();
                 foreach (var columnMapping in columnMappingList)
                 {
-                    if ("SerialNumber" == columnMapping.SpecialColumn)
-                    {
-                        tmpDataTable.Columns.Add(columnMapping.ColumnName, typeof(long));
-                    }
-                    else
-                    {
-                        tmpDataTable.Columns.Add(columnMapping.ColumnName, typeof(string));
-                    }
-
+                    tmpDataTable.Columns.Add(
+                        columnMapping.ColumnName,
+                        "SerialNumber" == columnMapping.SpecialColumn ? typeof(long) : typeof(string)
+                    );
 
                     if (columnMapping.Searchable)
                     {
-                        searchList.Add(columnMapping.ColumnName + " like '%{0}%'");
+                        searchSyntaxList.Add(columnMapping.ColumnName + " like '%{0}%'");
                     }
                 }
 
-                if (searchList.Count > 0)
+                if (searchSyntaxList.Count > 0)
                 {
-                    searchString = string.Join(" or ", searchList);
+                    _currentSearchSyntax = string.Join(" or ", searchSyntaxList);
                 }
 
                 long serialNumber = 1;
@@ -67,9 +64,10 @@ namespace LogViewer
                 {
                     var row = tmpDataTable.NewRow();
                     row[RawDataColumnIndex] = jToken.ToString();
+
                     foreach (var columnMapping in columnMappingList)
                     {
-                        if ("SerialNumber" == columnMapping.SpecialColumn)
+                        if (SpecialColumn.SerialNumber == columnMapping.SpecialColumn)
                         {
                             row[columnMapping.ColumnName] = serialNumber;
                         }
@@ -88,8 +86,8 @@ namespace LogViewer
                     serialNumber++;
                 }
 
-                dataTable = tmpDataTable;
-                dataGridView.DataSource = dataTable;
+                _currentDataTable = tmpDataTable;
+                dataGridView.DataSource = _currentDataTable;
                 dataGridView.Columns[RawDataColumnIndex].Visible = false;
                 dataGridView.Columns[ColorColumnIndex].Visible = false;
                 if (autoResizeSwitch.Active)
@@ -136,7 +134,7 @@ namespace LogViewer
             }
         }
 
-        private Color GetColor(string severity)
+        private static Color GetColor(string severity)
         {
             if (severity == null)
             {
@@ -210,21 +208,20 @@ namespace LogViewer
 
         private Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
         {
-            string dllName = args.Name.Contains(",")
+            var dllName = args.Name.Contains(",")
                 ? args.Name.Substring(0, args.Name.IndexOf(','))
                 : args.Name.Replace(".dll", "");
             dllName = dllName.Replace(".", "_");
             if (dllName.EndsWith("_resources")) return null;
-            System.Resources.ResourceManager rm =
-                new System.Resources.ResourceManager(GetType().Namespace + ".Properties.Resources",
-                    Assembly.GetExecutingAssembly());
-            byte[] bytes = (byte[])rm.GetObject(dllName);
+            var rm = new System.Resources.ResourceManager(GetType().Namespace + ".Properties.Resources",
+                Assembly.GetExecutingAssembly());
+            var bytes = (byte[])rm.GetObject(dllName);
             return Assembly.Load(bytes);
         }
 
         private void searchButton_Click(object sender, EventArgs e)
         {
-            if (dataTable == null)
+            if (_currentDataTable == null)
             {
                 return;
             }
@@ -232,7 +229,7 @@ namespace LogViewer
             try
             {
                 Cursor = Cursors.WaitCursor;
-                var dataView = dataTable.DefaultView;
+                var dataView = _currentDataTable.DefaultView;
                 if (string.IsNullOrWhiteSpace(searchTextBox.Text))
                 {
                     dataView.RowFilter = null;
@@ -240,6 +237,7 @@ namespace LogViewer
                     {
                         AutoResize();
                     }
+
                     rowCountLabel.Text = (dataGridView.RowCount - 1).ToString("N0");
                     return;
                 }
@@ -248,19 +246,20 @@ namespace LogViewer
                 {
                     dataView.RowFilter = searchTextBox.Text;
                 }
-                else if (string.IsNullOrWhiteSpace(searchString))
+                else if (string.IsNullOrWhiteSpace(_currentSearchSyntax))
                 {
                     dataView.RowFilter = null;
                 }
                 else
                 {
-                    dataView.RowFilter = string.Format(searchString, searchTextBox.Text.Trim());
+                    dataView.RowFilter = string.Format(_currentSearchSyntax, searchTextBox.Text.Trim());
                 }
 
                 if (autoResizeSwitch.Active)
                 {
                     AutoResize();
                 }
+
                 rowCountLabel.Text = (dataGridView.RowCount - 1).ToString("N0");
             }
             finally
@@ -271,17 +270,19 @@ namespace LogViewer
 
         private void autoResizeSwitch_ValueChanged(object sender, bool value)
         {
-            if (autoResizeSwitch.Active)
+            if (!autoResizeSwitch.Active)
             {
-                try
-                {
-                    Cursor = Cursors.WaitCursor;
-                    AutoResize();
-                }
-                finally
-                {
-                    Cursor = Cursors.Default;
-                }
+                return;
+            }
+
+            try
+            {
+                Cursor = Cursors.WaitCursor;
+                AutoResize();
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
             }
         }
 
